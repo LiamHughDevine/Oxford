@@ -1,8 +1,9 @@
 import _pickle as cp
 import numpy as np
 
-def main():
-    X, y = cp.load(open('winequality-white.pickle', 'rb'))
+
+def get_data():
+    X, y = cp.load(open("winequality-white.pickle", "rb"))
 
     N, D = X.shape
     N_train = int(0.8 * N)
@@ -11,6 +12,4 @@ def main():
     y_train = y[:N_train]
     X_test = X[N_train:]
     y_test = y[N_train:]
-
-if __name__ == "__main__":
-    main()
+    return (X_train, y_train, X_test, y_test)
