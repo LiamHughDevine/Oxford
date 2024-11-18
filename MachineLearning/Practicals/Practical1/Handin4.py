@@ -37,7 +37,7 @@ def main():
     dataset_size = []
     train_error = []
     test_error = []
-    for i in range(20, N, 20):
+    for i in range(20, 600, 20):
         train_err, test_err = train(X_train[:i], y_train[:i], X_test, y_test)
         dataset_size.append(i)
         train_error.append(train_err)
