@@ -34,11 +34,18 @@ class NBC:
         if log_prob == float("-inf"):
             return log_prob
         for j in range(self.num_features):
-            pdf = self.theta[j, c].pdf(x[j])
-            if pdf > 0:
-                log_prob += np.log(self.theta[j, c].pdf(x[j]))
-            else:
-                log_prob += float("-inf")
+            if self.feature_types[j] == "r":
+                pdf = self.theta[j, c].pdf(x[j])
+                if pdf > 0:
+                    log_prob += np.log(pdf)
+                else:
+                    log_prob += float("-inf")
+            elif self.feature_types[j] == "b":
+                pmf = self.theta[j, c].pmf(x[j])
+                if pmf > 0:
+                    log_prob += np.log(pmf)
+                else:
+                    log_prob += float("-inf")
         return log_prob
     
     def predict_element(self, x):
