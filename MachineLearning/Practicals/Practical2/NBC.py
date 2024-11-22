@@ -49,8 +49,8 @@ class NBC:
         return log_prob
     
     def predict_element(self, x):
-        predictions = np.array([self.log_prob(x, c) for c in range(self.num_classes)])
-        return np.argmax(predictions)
+        probabilities = np.array([self.log_prob(x, c) for c in range(self.num_classes)])
+        return np.argmax(probabilities)
 
 
     def predict(self, Xtest):
